@@ -7,29 +7,60 @@
         <VerticalStackLayout
             Padding="30,0"
             Spacing="25">
-            <Image
-                Source="dotnet_bot.png"
-                HeightRequest="185"
-                Aspect="AspectFit"
-                SemanticProperties.Description="dot net bot in a race car number eight" />
+            <HorizontalStackLayout Spacing="25">
+                <VerticalStackLayout Spacing="25" Margin="30" RadioButtonGroup.GroupName="group1">
+                    <Label
+                            Text="Rodzaj przesyłki"
+                        />
+                    <RadioButton  x:Name="RadioButton1" GroupName="group1" Content="Pocztówka" Value ="1" IsChecked="true" CheckedChanged="setPackageType">
+                    </RadioButton>
+                    <RadioButton  x:Name="RadioButton2" GroupName="group1" Content="List" Value="2"  CheckedChanged="setPackageType">
+                    </RadioButton>
+                    <RadioButton  x:Name="RadioButton3" GroupName="group1" Content="Paczka" Value ="3"  CheckedChanged="setPackageType">
+                    </RadioButton>
+                    <Button 
+                        Text="Sprawdź cene"
+                        x:Name="btnPriceCheck"
+                        Clicked="priceCheck"
+                        />
+                    <HorizontalStackLayout Spacing="25">
+                        <Image x:Name="displayPhoto" Source="list.png"/>
+                        <Label x:Name="displayPrice" Text="Cena: 1zł" FontSize="Large"/>
+                    </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                <VerticalStackLayout Spacing="25" Margin="30">
+                    <Label
+                            Text="Dane adresowe"
+                            />
+                    <Label
+                            Text="Ulica z numerem"
+                            />
+                    <Entry
+                            x:Name="street"
+                            />
 
-            <Label
-                Text="Hello, World!"
-                Style="{StaticResource Headline}"
-                SemanticProperties.HeadingLevel="Level1" />
+                    <Label
+                         Text="Kod pocztowy"
+                         />
+                    <Entry
+                         Keyboard="Numeric"
+                         x:Name="postalCode"
+                         />
 
-            <Label
-                Text="Welcome to &#10;.NET Multi-platform App UI"
-                Style="{StaticResource SubHeadline}"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
-
+                    <Label
+                         Text="nazwa miasta"
+                         />
+                    <Entry
+                         x:Name="city"
+                         />
+                </VerticalStackLayout>
+            </HorizontalStackLayout>
             <Button
-                x:Name="CounterBtn"
-                Text="Click me" 
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Fill" />
+                Text="Zatwierdź"
+                x:Name="confirm"
+                Clicked="verifyEntryData"/>
+            <Label
+                x:Name="displayError" Text=" "/>
         </VerticalStackLayout>
     </ScrollView>
 
